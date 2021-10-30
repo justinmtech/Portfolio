@@ -1,0 +1,321 @@
+/*Master styles*/
+
+body {
+	margin: 0px;
+	font-family: arial;
+	background-color: #dedede;
+}
+
+
+
+/*Nav styles*/
+.nav-wrapper {
+	position: relative;
+	top: 0;
+	height: 86px;
+	background-color: #060606;
+}
+
+.left-side {
+	float: left;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 12px;
+	width: 15%;
+	top: 50%;
+	height: 86px;
+	font-size: 0.9em;
+	text-transform: uppercase;
+}
+
+.left-side a {
+	padding-right: 12px;
+}
+
+.right-side {
+	padding-right: 12px;
+	font-weight: bold;
+	float: right;
+	color: #dedede;
+	top: 50%;
+	height: 86px;
+	align-items: center;
+	display: flex;
+}
+
+
+
+.nav-link-wrapper {
+	height: 22px;
+	border-bottom: 1px solid transparent;
+}
+
+.nav-link-wrapper:hover {
+	border-bottom: 1px #dedede;
+}
+
+.nav-link-wrapper a {
+	color: gray;
+	text-decoration: none;
+	transition: color 0.1s;
+}
+
+.nav-link-wrapper a:hover {
+	color: #dedede;	
+}
+
+
+/*Portfolio styles*/
+
+.portfolio-items-wrapper {
+	/*display: grid;
+	justify-content: center;
+	align-items: center;
+	grid-template-columns: 1fr 1fr 1fr;*/
+	max-width: 1900px;
+  	margin: 0 auto;
+  	width: 100%;
+  	display: grid;
+  	grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  	grid-auto-rows: 0.2fr;
+  	grid-gap: 10px;
+  	margin-top: 24px;
+	margin-bottom: 48px;
+}
+
+.portfolio-item-wrapper {
+
+}
+
+.portfolio-item-wrapper {
+	position: relative;
+	padding: 12px;
+}
+
+.portfolio-img-background {
+	height: 360px;
+	width: 360px;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.portfolio-logo-wrapper img {
+	width: 50%;
+}
+
+.portfolio-logo-wrapper {
+}
+
+.portfolio-project-technologies {
+	position: relative;
+	left: 12px;
+	top: 0px;
+	width: 250px;
+	padding: 24px;
+}
+
+.portfolio-project-technologies img {
+	max-width: 35px;
+	max-height: 70px;
+	opacity: 0;
+}
+
+.portfolio-item-wrapper:hover .portfolio-project-technologies img {
+	transition: opacity 1.0s;
+	opacity: 0.75;
+}
+
+.img-text-wrapper {
+	position: absolute;
+	top: 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	text-align: center;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.link-ref {
+	text-decoration: none;
+}
+
+.subtitle {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	transition: 0.2s;
+	color: transparent;
+	text-decoration: none;
+}
+
+.subtitle h1 {
+	height: 24px;
+	font-weight: bold;
+}
+
+.subtitle a {
+	height: 12px;
+	font-weight: 100;
+}
+
+.img-text-wrapper:hover .subtitle {	
+	color: #dedede;
+	text-decoration: none;
+}
+
+.my-projects {
+	font-size: 32px;
+	color: #060606;
+	display: grid;
+	justify-content: center;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 24px
+}
+
+#built-with {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	color: #dedede;
+	opacity: 0;
+	display: none;
+}
+
+.img-darken {
+	transition: 0.2s;
+	filter: brightness(30%);
+}
+
+.footer-links {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	top: 50%;
+	color: white;
+	padding: 12px;
+}
+
+.footer-link-wrapper {
+	height: 22px;
+	border-bottom: 1px solid transparent;
+	transition: border-bottom 0.1s;
+}
+
+.footer-link-wrapper a {
+	color: gray;
+	text-decoration: none;
+	transition: color 0.1s;
+	padding: 12px;
+	text-transform: uppercase;
+}
+
+.footer-link-wrapper a:hover {
+	color: #dedede;
+}
+
+
+.left-side-wrapper {
+	float: left;
+	width: 45%;
+	padding: 12px;
+	height: 500px;
+}
+
+.left-side-content {
+
+}
+
+.right-side-wrapper {
+	float: right;
+	width: 45%;
+	padding: 12px;
+	height: 500px;
+}
+
+.left-side-img img {
+	width: 25%;
+	align-items: center;
+}
+
+.footer {
+	display: flex;
+	background-color: #060606;   
+	height: 96px;
+	width: 100%;
+}
+
+.section-wrapper {
+
+}
+
+#about-page {
+	height: 1500px;
+}
+
+#contact-page {
+	height: 900px;
+}
+
+#affinity-designs-page {
+	height: 1200px;
+}
+
+#the-wild-page {
+	height: 2000px;
+}
+
+.section-content-wrapper {
+	color: white;
+	height: 1200px;	
+	width: 100%;
+}
+
+.project-info {
+	width: 50%;
+	margin: auto;
+}
+
+.section-header {
+	position: absolute;
+	margin-left: 24px;
+	top: 250px;
+	font-size: 36px;
+	width: 40%;
+	float: left;
+	background-color: #060606;
+	border: 4px solid white;
+	text-align: center;
+}
+
+.section-content {
+	font-size: 24px;
+	font-weight: 600;
+	margin-top: auto;
+	margin-bottom: auto;
+	top: 150px;
+	width: 50%;
+	position: relative;
+	float: right;
+}
+
+.section-img-background {
+	position: absolute;
+	height: 750px;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+

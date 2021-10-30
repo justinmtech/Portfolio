@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>About Justin</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+		<div class="nav-wrapper">
+			<div class="left-side">
+				<div class="nav-link-wrapper">
+					<a href="index.html">Home</a>
+				</div>
+				<div class="nav-link-wrapper">
+					<a href="about.html">About</a>
+				</div>
+				<div class="nav-link-wrapper">
+					<a href="experience.html">Experience</a>
+				</div>
+				<div class="nav-link-wrapper">
+					<a href="contact.html">Contact</a>
+				</div>
+			</div>
+
+			<div class="right-side"> 
+				<div>Justin M. | Portfolio</div>
+			</div>
+		</div>
+	
+		<div class="section-wrapper">
+		<div class="section-content-wrapper">		
+			<div class="section-img-background" style="background-image:url(images/technology.jpg)"></div>
+				<div class="section-header">
+					<h2>Computer Science</h2>	
+				</div>
+				<div class="section-content">
+					<ul>
+						<p>• Java Programming (1 yr. experience)</p>
+						<p>• Object-Oriented-Programming</p>
+						<p>• Databases/SQL</p>
+						<p>• Spring</p>
+						<p>• Hibernate</p>
+						<p>• Unit Testing</p>
+						<p>• HTML</p>
+						<p>• CSS</p>
+						<p>• JavaScript</p>
+						<p>• Linux System Administration</p>
+					</ul>	
+					</div>		
+		</div>
+
+		<div class="section-content-wrapper">		
+			<div class="section-img-background" style="background-image:url(images/skills.jpg)"></div>
+				<div class="section-header">
+					<h2>Other Skills</h2>	
+				</div>
+				<div class="section-content">
+					<ul>
+						<p>• Java Programming (1 yr. experience)</p>
+						<p>• Object-Oriented-Programming</p>
+						<p>• Databases/SQL</p>
+						<p>• Spring</p>
+						<p>• Hibernate</p>
+						<p>• Unit Testing</p>
+						<p>• HTML</p>
+						<p>• CSS</p>
+						<p>• JavaScript</p>
+						<p>• Linux System Administration</p>
+					</ul>	
+					</div>		
+		</div>
+
+		<div class="section-content-wrapper">		
+			<div class="section-img-background" style="background-image:url(images/ethics2.png)"></div>
+				<div class="section-header">
+					<h2>Values</h2>	
+				</div>
+				<div class="section-content">
+					<ul>
+						<p>• Java Programming (1 yr. experience)</p>
+						<p>• Object-Oriented-Programming</p>
+						<p>• Databases/SQL</p>
+						<p>• Spring</p>
+						<p>• Hibernate</p>
+						<p>• Unit Testing</p>
+						<p>• HTML</p>
+						<p>• CSS</p>
+						<p>• JavaScript</p>
+						<p>• Linux System Administration</p>
+					</ul>	
+					</div>		
+		</div>	
+		</div>			
+</body>
+
+<script>
+	
+	const sections = document.querySelectorAll('.section-content-wrapper');
+
+	sections.forEach(section => {
+		section.addEventListener('mouseover', () => {
+			section.childNodes[1].classList.add('img-darken');
+		})
+
+				section.addEventListener('mouseout', () => {
+			section.childNodes[1].classList.remove('img-darken');
+		})
+	})
+	
+
+</script>
+
+</html>

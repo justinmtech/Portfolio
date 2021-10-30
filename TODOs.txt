@@ -1,0 +1,50 @@
+TODOs
+
+1. Determine what will be on the portfolio and how it will be presented.
+	- Home page will give off a unique, personalized and professional feel.
+	- I want my portfolio site to be a reflection of myself.
+	- The person/employer viewing the site will need to feel a few things about me to
+		effectively reduce friction:
+			- calm confidence (not arrogance)
+			- great values
+			- hard working
+			- strong communicator
+			- salesman
+			- intelligent/problem solver/open minded
+			- skilled in areas needed
+			- responsible
+			- adaptable (like water)
+			- different, in a good way
+
+2. Build the project
+	- create the folder
+	- adding files
+	- connecting files
+
+2. Navbar
+	- Home
+	- About
+	- Experience
+	- Github
+
+3. Portfolio project grind
+	- Images
+	- Titles
+	- Descriptions
+	- Animations
+	- JavaScript
+
+4. About page
+	- Describe what I'm good at and sell myself as a potential employee.
+
+5. Experience
+	- Show a timeline and explanation of my work experience.
+
+6. Github
+	- A link to my Github profile
+
+7. LinkedIn
+	- Link to my LinkedIn profile
+
+8. Twitter
+	- Link to my Twitter profile

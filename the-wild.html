@@ -60,23 +60,33 @@
 					<h4>Quit</h4>
 						<p>The quit command asks the player if they are sure they want to quit, and if they are</p>
 					<h4>Info</h4>
+						<p>The info class displays information about the player, including their inventory, money username and location.</p>
 					<h4>Inn</h4>
+						<p>The Inn is a class that updates the player's location to the Inn, then asks them if they want to stay for the night in exchange for some money. If the player answer's yes, then the amount of coins required is deducted from their account, if they have them.</p>
 					<h4>Wild</h4>
+						<p>The wild class puts the user in an instance where they can use the "battle" command.l</p>
 					<h4>Town</h4>
+						<p>The town class changes the player's location to town. When a player issues any command, it checks their location and the commands available to them changed based on that location. For example, in town, players can go to the inn, but they can't go there while in the wild.</p>
 					<h4>Shop</h4>
+						<p>The shop class puts the player in an instance where they can purchase items. The items are listed on the screen and if the player wants to purchase something, they type the name of the item, then the shop "npc" asks them if they want to purchase it. If they type yes and have enough money, the item is added to their inventory.</p>
 
 			<h2>Data</h2>
 				<h3>Configuration</h3>
+					<p>The Wild has some aspects that are configurable by the user before running the game. The LoadConfiguration class connects to a YML file where the configuration details are.</p>
 				<h3>Player Data</h3>
+					<p>Player data is stored in a text file.</p>
 				<h3>Resources</h3>
 				<h3>Saving & Retrieving Data</h3>
 
 			<h2>User Interface</h2>
 				<h3>Input Parsing</h3>
+					<p>User input is parsed and determined if it is a command that exists and available. If it is, then the correspondig class is instantiated to execute the command.</p>
 				<h3>Display</h3>
+					<p>The display class has most of the output that the player receives by the program.</p>
 
 			<h2>Utilities</h2>
 				<h3>RNG</h3>
+					<p>A random number generator is used to generate random values for probabilities.</p>
 				<h3>Input Scanner</h3>
 			
 		</div>

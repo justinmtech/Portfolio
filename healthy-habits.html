@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<div class="container" id="affinity-designs-page">
+	<div class="container" id="healthy-habits-page">
 		<div class="nav-wrapper">
 			<div class="left-side">
 				<div class="nav-link-wrapper">
@@ -39,16 +39,43 @@
 		<div class="info-summary">
 			<h2>General Summary</h2>
 				<p>Healthy Habits is a Spring application that allows users to go to a website, make an account, enter habits and behaviors they would like to track, and view those on a graph so they can see their progress over time.</p>
-				<p>I was looking for a realistic project I could build by myself that would combine all of what I'd been learned about programming and software. It was built with Java, Hibernate, Spring, MySQL, HTML, CSS and JavaScript.</p>
-
-			<h2>How was it made?</h2>
+				<p>My main goal with this project is to display my competence as a developer and I was looking for a realistic project I could build by myself that would combine all of what I'd been learning about programming and software. The use-case goal of this application is to help users track their behaviors in a way that is insightful and helpful for their progress as individuals. I personally use it and have found that it helps me achieve my goals faster, and motivates me in the process.</p>
 				<p></p>
-			
-		</div>
-		<div class="">
 
-		</div>
+			<h2>What was it built with?</h2>
+				<p>Healthy Habits was built with Java, Spring, Hibernate, MySQL, CSS and JavaScript.</p>
 
+			<h2>How does it work?</h2>
+				<p>The application follows a MVC design pattern using Spring to achieve the end-goal for the application. Along with Spring, Hibernate is used to store persistent data in a MySQL database. Thymeleaf works in conjuction with the view layer to display models that are sent and received between the user's view and the server. This allows the user to generate content and visualize that content in a meaningful way.</p>
+				<p>Spring Security is used to authenticate users and BCrypt is used to encrypt passwords that are sent by the client. Spring Security allows the program to require authorization for users to access certain pages. In order to be authorized, the user must have an account and be logged in to it. If the client accessing an authorized-only web-page is not logged in to a valid account, they cannot access it.</p>
+
+			<h2>How is the code structured?</h2>
+				<p>The application is separated into 5 different sub-packages. This makes it easy to navigate and understand for both myself and any other developers who would potentially be working with it.<p>
+
+				<h3>Controllers</h3>
+					<p>There are several controllers used in this program. If you want to see them all, feel free to check them out on GitHub.</p>
+					<h4>HabitsController</h4>
+					<h4>VisualizerController</h4>
+
+				<h3>Repositories</h3>
+					<p>The UserRepository is an interface that extends Spring's CrudRepository of the object type User and id of Integer.</p>
+				<h3>Security</h3>
+					<p>The ApplicationSecurityConfig class is used to configure Spring to behave how it needs to behave to meet our requirements. It customizes two aspects of Spring, the AuthenticationManagerBuilder and HttpSecurity. The AuthManagerBuilder needs to know the right UserDetailsService in order to function properly. Since a custom one is used in this application, the CustomUserDetailsService is autowired and set as the UserDetailsService.</p>
+					<p>The HttpSecurity configuration method is set to authorize requests on a certain set of pages where it's needed, like login, visualizer, habits and logout. This secures those pages so they cannot be accessed by someone who should not be able to see them.</p>
+				<h3>Services</h3>
+					<h4>CustomUserDetailsService</h4>
+						<p>The CustomUserDetailsService implements Spring's UserDetailsService and overrides the loadByUsername method. This is needed because the UserRepository interfaces locates users bsaed on their unique integer id, not their username. A lambda expression is used to parse through all users to find the one that matches the username that is authorized to view that page.</p>
+						<p>The UserService fetches and stores data using UserRepository interface. The UserService what is used by other classes and methods when they need to get or store user information, rather than dealing with the interface directly.</p>
+						<p>The DataValidation class is a utility for checking user-generated inputs to ensure that they meet the requirements and are not malicious, such as inputs containing special characters, or extremely long inputs that would impact server performance and user experience if it happened at a large scale.</p>
+				<h3>User</h3>
+					<p>There are two classes in the User package: Habit and User. These classes represent the data that is persisted in the application.</p>
+					<p>The User class is annotated as an Entity so that JPA knows it should be persistent. The class has 5 fields as follows: userId (int), username (String), password (String), roles (String) and habits (List<Habit>). The userId is the unique identifier and it is generated sequentially. The habits field is a list with a OneToMany relationship with the Habit class. One user can have many habits.</p>
+					<p></p>
+
+				<h3>Resources</h3>
+					<h4>CSS</h4>
+					<h4>HTML Templates</h4>
+		</div>
 	</div>
 	</div>
 </div>

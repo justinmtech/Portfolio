@@ -44,8 +44,6 @@ body {
 	display: flex;
 }
 
-
-
 .nav-link-wrapper {
 	height: 22px;
 	border-bottom: 1px solid transparent;
@@ -64,7 +62,6 @@ body {
 .nav-link-wrapper a:hover {
 	color: #dedede;	
 }
-
 
 /*Portfolio styles*/
 
@@ -270,8 +267,20 @@ body {
 	height: 1200px;
 }
 
+#healthy-habits-page {
+	height: 2400px;
+}
+
+#todo-list-page {
+	height: 2300px;
+}
+
 #the-wild-page {
-	height: 3000px;
+	height: 3200px;
+}
+
+#twitter-clone-page {
+	height: 2800px;
 }
 
 .section-content-wrapper {
@@ -306,6 +315,12 @@ body {
 	width: 50%;
 	position: relative;
 	float: right;
+}
+
+.github-link {
+	text-transform: none;
+	display: grid;
+	justify-content: center;
 }
 
 .section-img-background {

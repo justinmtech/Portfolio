@@ -55,7 +55,11 @@
 				<h3>Controllers</h3>
 					<p>There are several controllers used in this program. If you want to see them all, feel free to check them out on GitHub.</p>
 					<h4>HabitsController</h4>
+						<p>The HabitsController class enables registered, logged-in users go to the "/habits" url in order to add or remove habits to their account. The class has an autowired field for CustomUserDetailsService that allows it to fetch the authorized user browsing the page, and also one for UserService so users can be saved/updated. There is a get method and a post method for this controller. The get method returns the "habitspage.html" file with two models, habit and user. The post method places the habit model returned in a try block and uses an if-statement to determine if the habit is being added or removed, then triggers the logic necessary to carry out the user's desire. After that, the user is saved and the habitspage is returned if no errors are caught.</p>
 					<h4>VisualizerController</h4>
+						<p>The VisualizerController class simply obtains the information needed for two models. The user object contains all of the information needed for the visualizer view. Two models are created instead of one to separate the user and the user's habits for simplicity in the HTML file.</p>
+					<h4>RegisterController</h4>
+						<p>The RegisterController listens on the "/register" url and </p>
 
 				<h3>Repositories</h3>
 					<p>The UserRepository is an interface that extends Spring's CrudRepository of the object type User and id of Integer.</p>

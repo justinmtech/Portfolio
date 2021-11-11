@@ -59,10 +59,10 @@
 					<h4>VisualizerController</h4>
 						<p>The VisualizerController class simply obtains the information needed for two models. The user object contains all of the information needed for the visualizer view. Two models are created instead of one to separate the user and the user's habits for simplicity in the HTML file.</p>
 					<h4>RegisterController</h4>
-						<p>The RegisterController listens on the "/register" url and </p>
+						<p>The RegisterController listens on the "/register" url and has a get method and a post method. The get method returns a new User model with the name "user" for Thymeleaf and the register.html page view. The post method obtains the user model that is sent when th e page is submitted. It then uses the DataValidation class to check if the username and password are valid. If they are, then the user's password is set to an encoded password by the PasswordEncoder. Then, the UserService calls the addUser method and passes the user model object. This method's code is in a try-catch block, so if it encounters an error it returns the the error page.</p>
 
 				<h3>Repositories</h3>
-					<p>The UserRepository is an interface that extends Spring's CrudRepository of the object type User and id of Integer.</p>
+					<p>The UserRepository is an interface that extends Spring's CrudRepository of the object type User and id of Integer. The UserService class uses this repository to manipulate the data being stored by the application.</p>
 				<h3>Security</h3>
 					<p>The ApplicationSecurityConfig class is used to configure Spring to behave how it needs to behave to meet our requirements. It customizes two aspects of Spring, the AuthenticationManagerBuilder and HttpSecurity. The AuthManagerBuilder needs to know the right UserDetailsService in order to function properly. Since a custom one is used in this application, the CustomUserDetailsService is autowired and set as the UserDetailsService.</p>
 					<p>The HttpSecurity configuration method is set to authorize requests on a certain set of pages where it's needed, like login, visualizer, habits and logout. This secures those pages so they cannot be accessed by someone who should not be able to see them.</p>
@@ -74,11 +74,15 @@
 				<h3>User</h3>
 					<p>There are two classes in the User package: Habit and User. These classes represent the data that is persisted in the application.</p>
 					<p>The User class is annotated as an Entity so that JPA knows it should be persistent. The class has 5 fields as follows: userId (int), username (String), password (String), roles (String) and habits (List<Habit>). The userId is the unique identifier and it is generated sequentially. The habits field is a list with a OneToMany relationship with the Habit class. One user can have many habits.</p>
-					<p></p>
+					<p>The Habit class is annotated as an Entity as well. The class has 5 fields that define the different states the habit object can have. The 5 fields are name (String), ratings (ArrayList<Integer>), dates (ArrayList<Long>), habitType (String) and user (User). The habitType variable is annotated as Transient so that it is not persisted, since it is only used for determining if a habit is being added or removed. The user variable has a ManyToOne annotation that indicates there can be many habits to one user. The ratings field is an array list of 0/10 ratings that display in the order that they were added by the user. The dates array list is a collection of timestamps in millisecond format. Every time a habit is created, the current date in ms is added to this list. Deciding to go with dates in ms was done because that was the easiest way to feed that information to Highcharts without having to manipulate it too much, and getting the current time in milliseconds is as easy as calling System.currentTimeMillis().</p>
 
 				<h3>Resources</h3>
 					<h4>CSS</h4>
+						<p>The styling includes a couple images to fit the theme of the application and makes the website easy to navigate and use.</p>
 					<h4>HTML Templates</h4>
+						<p>Most of the HTML templates are not noteworthy other than the fact that they include Thymeleaf references which allow the view-layer to obtain and display models based on Java classes. The visualizer.html page contains a graph that models user data however, which I will explain below.</p> 
+						<p>The habit visualizer page uses JavaScript, Thymeleaf and Highcharts to display the data relevant to the user. In order to display the habits a user has in a way that the chart understands, I created two JavaScript variables. One of them is a blank array list of data, and the other is an array list of the user's habits. I used a for loop that iterates over the user's habits and creates a habit variable with two fields: name and an array list of data. It then iterates over a specific habit's ratings to then push that data to the array list in the habit object. After all of the user's habits have been iterated over and added to the data array list, the Highcharts function is called, and the data variable is given to the series parameter so that the graph has the data needed, in the proper format.</p>
+						<p>Admittedly, figuring out how to display this data in a way that Highcharts understood took a while for me since this was the first project that I dealt with displaying Java-originated objects on a website. I figured it out in the end though and achieved the desired end-result, so that's what matters!</p>
 		</div>
 	</div>
 	</div>

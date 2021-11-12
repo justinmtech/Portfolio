@@ -35,6 +35,8 @@
 
 	<div class="content-wrapper">
 
+		<a class="github-link" href="https://github.com/justinmtech/Healthy-Habits.git">VIEW ON GITHUB</a>
+
 		<div class="project-info">
 		<div class="info-summary">
 			<h2>General Summary</h2>
@@ -69,7 +71,9 @@
 				<h3>Services</h3>
 					<h4>CustomUserDetailsService</h4>
 						<p>The CustomUserDetailsService implements Spring's UserDetailsService and overrides the loadByUsername method. This is needed because the UserRepository interfaces locates users bsaed on their unique integer id, not their username. A lambda expression is used to parse through all users to find the one that matches the username that is authorized to view that page.</p>
+					<h4>UserService</h4>
 						<p>The UserService fetches and stores data using UserRepository interface. The UserService what is used by other classes and methods when they need to get or store user information, rather than dealing with the interface directly.</p>
+					<h4>DataValidation</h4>
 						<p>The DataValidation class is a utility for checking user-generated inputs to ensure that they meet the requirements and are not malicious, such as inputs containing special characters, or extremely long inputs that would impact server performance and user experience if it happened at a large scale.</p>
 				<h3>User</h3>
 					<p>There are two classes in the User package: Habit and User. These classes represent the data that is persisted in the application.</p>
@@ -83,8 +87,16 @@
 						<p>Most of the HTML templates are not noteworthy other than the fact that they include Thymeleaf references which allow the view-layer to obtain and display models based on Java classes. The visualizer.html page contains a graph that models user data however, which I will explain below.</p> 
 						<p>The habit visualizer page uses JavaScript, Thymeleaf and Highcharts to display the data relevant to the user. In order to display the habits a user has in a way that the chart understands, I created two JavaScript variables. One of them is a blank array list of data, and the other is an array list of the user's habits. I used a for loop that iterates over the user's habits and creates a habit variable with two fields: name and an array list of data. It then iterates over a specific habit's ratings to then push that data to the array list in the habit object. After all of the user's habits have been iterated over and added to the data array list, the Highcharts function is called, and the data variable is given to the series parameter so that the graph has the data needed, in the proper format.</p>
 						<p>Admittedly, figuring out how to display this data in a way that Highcharts understood took a while for me since this was the first project that I dealt with displaying Java-originated objects on a website. I figured it out in the end though and achieved the desired end-result, so that's what matters!</p>
+
+				<h2>What I Learned</h2>
+					<p>While creating this project, I was pushing my limits as a developer. I got stumped on parts of the application several times, but I didn't give up. The purpose of this project was to strain my abilities to the point where I had to grow my skillset in order to solve the problems at hand. It helped me develop a much higher level of competence and also confidence in my own abilities. I began the project only knowing Java and SQL, but through creating the finished product I learned how to build the front and backend of a web application as well, with HTML, CSS, JavaScript, Thymeleaf and Spring.</p>
+					<p>The most important thing I learned while developing this project was that foundational understanding of what you are working with is extremely important in order to solve problems. Any time I was stumped on a problem, it was with a technology or method that I was not knowledgeable enough in. For example, how do I take a user's habits and display them on a graph? In my googling process, I learned that Highcharts was a useful and easy way to display data on a graph, so I started implementing that in the application's HTML. After I got the graph to appear, I realized that I did not know how to link the data my application was generating to the graph. I could hard-code data on it easily, but using the data generated from the backend and then translating that to JavaScript in a way that Highcharts would understand proved to be difficult for me.</p>
+					<p>I realized that the main issue was a communication issue between technologies. I understood how to convey an object in Java, but not JavaScript. This lead me to take a break from development to go learn what I needed to know about JavaScript to manipulate data it received from Spring's models and create new data structures. Java objects are easily converted to JavaScript objects, but the problem was that Highcharts needed data stored with certain key-value pairs for it to understand what it needed to display. This was done by creating new JavaScript variables based on the Spring models it received. I iterated over the objects it received and put them in a new array list that contained keys and values that matched the Highchart variables needed to create a series of line graphs.</p>
+					<p>If I were to create the same application again from scratch, it would only take a few hours. A lot of the time spent on this project was trial-and-error and the learning process, which cannot be skipped on the road to mastery. I'm grateful for the growth and understanding that occurred during the development process.</p>					
 		</div>
 	</div>
+
+		<a class="github-link" href="https://github.com/justinmtech/Healthy-Habits.git">VIEW ON GITHUB</a>
 	</div>
 </div>
 

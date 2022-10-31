@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Justin's Portfolio - Todo-List</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<div class="container" id="todo-list-page">
+		<div class="nav-wrapper">
+			<div class="left-side">
+				<div class="nav-link-wrapper">
+					<a href="index.html">Projects</a>
+				</div>
+				<div class="nav-link-wrapper">
+					<a href="about.html">About</a>
+				</div>	
+				<div class="nav-link-wrapper">
+					<a href="experience.html">Experience</a>
+				</div>							
+				<div class="footer-link-wrapper">
+					<a href="contact.html">Contact</a>
+				</div>				
+			</div>
+
+			<div class="right-side">
+				<p>Justin Mitchell's Portfolio</p>
+			</div>
+		</div>
+
+
+		<div class="my-projects">
+			<h1>Todo-List</h1>
+		</div>
+
+
+	<div class="content-wrapper">
+
+		<a class="github-link" href="https://github.com/justinmtech/Todo-List.git">VIEW ON GITHUB</a>
+
+		<div class="project-info">
+		<div class="info-summary">
+			<h2>General Summary</h2>
+				<p>Todo-List is a simple web application where users can create their own todo-list.</p>
+
+			<h2>What was it built with?</h2>
+				<p>Todo-List was made with Java, Spring, Hibernate, CSS and MySQL.</p>
+
+
+			<h2>How does it work?</h2>
+				<p>The application uses Spring and the MVC design pattern to allow simple user interaction through a web-client. The program works by persisting users and a list of text items in a database associated with that user. The user can add and remove items from this list thanks to MVC, making it their own list.</p>
+
+				<p>User data is stored in a MySQL database and the passwords are encrypted with BCrypt.</p>
+
+				<p>Spring Security is used to manage user authentication. It allows the app to require logins on certain pages so they cannot be viewed unless the user is logged in. It has a session system as well that allows you to stay logged in until your IP changes.</p>
+
+				<p>The view is built with HTML, Thymeleaf and minimal CSS for pure functionality. It's not fancy, but it's not supposed to be! Thymeleaf in this application is used for consuming and displaying Spring models as readable text for the end-user.</p>
+
+			<h2>How is the code structured?</h2>
+				<p>The application is separated into 5 sub-packages. Each package deals with its own set of solutions for a certain </p>
+					<h3>Controllers</h3>
+						<p>There are 4 controllers used. The application has 4 different web-pages that can be interacted with, and one controller is needed for each of them.</p>
+						<p>The HomeController simply listens for the root directory and returns the home.html view.</p>
+						<p>The RegisterController returns the register.html page at the "/register" directory when the user requests it. When the user submits their username and desired password, it passes a ModelAttribute parameter of type User, along with a model based on the input field of the page. The user's password is encrypted afterwards on the server side, then the UserService saves the user model generated to the database.</p>
+						<p>The TodoListController listens on the "/list" end-point and sends the client the list.html page along with a user model that is obtained through the UserService when requested. The UserService obtains the authenticated user's username through the SecurityContextHolder, then searches the UserRepository for that username and returns the User object for the username if it exists. The user model contains the list of items for the todo-list, which is then displayed as plain text on the page using Thymeleaf.</p>
+						<p>The TodoListManager has two methods. One method listens for page get requests on "/manager", and the other listens for posts. The get method returns a new model of a TodoItem, along with the manager.html page. The post listener gets that TodoItem model after it has been submitted, and depending on the checkbox option selected, it will add or remove it from the user's list. After that, the user is saved and the manager.html page is returned again.</p>
+						 j
+						<p>The User Repository extends Spring's CrudRepository with User type and String as the id since user's are searched for by username.</p>		
+					<h3>Security</h3>		
+						<p>The ApplicationSecurityConfig extends WebSecurityConfigurerAdapter from Spring and overrides configuration methods for authentication and http handling. This allows the customization of certain tasks within the program to tailor it to the application's needs. For this application, I needed to set the AuthenticationManagerBuilder object to the CustomUserDetailsService object that is being used to create Spring users. I also needed to configure HttpSecurity to tell the application what pages require authentication and to enable logins/logouts.</p>
+						<p>The CustomUserDetails class implements UserDetails from Spring and overrides all of the methods from it. Most of the methods are hard-coded to "true" since they are not needed in this app, but username and password are the private variables that can change.</p>
+					<h3>Services</h3>
+						<p>The CustomUserDetailsService is a Spring Service that loads users with a username. It has an autowired UserService that returns the user object that corresponds with the username parameter, then returns it as a CustomUserDetails object. The CustomUserDetails class has a constructor that takes a User object and then grabs the username and password data and re-creates it as a CustomUserDetails object with setters.</p>
+						<p>The UserService has an autowired UserRepository class that is used to get, add, save or remove users from the database with Hibernate. The reason UserService is used rather than just UserRepository is because it uses its own methods to manipulate data and adds further control over error-handling and allows for actual implementations. UserRepository is an interface, and UserService is a class.
+					<h3>User</h3>
+						<p>The User class contains 3 fields: username (String), password (String) and todoList (List<TodoItem>). This is all of the information needed to authenticate the user when they visit the site, then allow them to see and manipulate their todo-lists. The class is annotated with @Entity to designate it as an object that should be persisted with JPA. The username is annotated as the unique identifier and the list of TodoItems is annotated with a OneToMany relationship since there is one user to many todo-items.</p>
+						<p>The TodoItem class has 3 fields: id, name and remove. This class is annotated as an Entity so it can be persisted with JPA. The id field is the unique identifier, and the "remove" field is annotated as a transient field so it is not persisted. It's only used to determine whether a TodoItem should be removed or not when it is submitted. The id field has a GeneratedValue annotation with the sequence strategy so it's identity is automatically generated. The items in this class needed to have a unique number identifier rather than name identification, because there can be users who have todo-items of the same names.</p>
+					<h3>Resources</h3>
+						<h4>CSS</h4>
+							<p>The CSS styling is bare-minimum and only serves to make the application easy enough to understand and use.</p>
+						<h4>Templates</h4>
+							<p>There are 5 templates. Each of them are an HTML file that contains the view for the user. Thymeleaf is used here in order to pass object models to and from the server.</p>
+			
+		</div>
+
+		</div>
+
+		<a class="github-link" href="https://github.com/justinmtech/Todo-List.git">VIEW ON GITHUB</a>
+
+	</div>
+	</div>
+</div>
+
+
+</body>
+
+<footer>	
+	<div class="footer">
+	<div class="footer-links">
+				<div class="footer-link-wrapper">
+					<a href="https://github.com/justinmtech">Github</a>
+				</div>
+				<div class="footer-link-wrapper">
+					<a href="https://twitter.com/jamm_affinity">Twitter</a>
+				</div>
+				<div class="footer-link-wrapper">
+					<a href="mailto:contact@justinmtech.com">Contact</a>
+				</div>
+	</div>
+	</div>
+</footer>
+
+</html>

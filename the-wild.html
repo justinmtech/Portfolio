@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Justin's Portfolio - The Wild</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<div class="container" id="the-wild-page">
+		<div class="nav-wrapper">
+			<div class="left-side">
+				<div class="nav-link-wrapper">
+					<a href="index.html">Projects</a>
+				</div>
+				<div class="nav-link-wrapper">
+					<a href="about.html">About</a>
+				</div>			
+				<div class="nav-link-wrapper">
+					<a href="contact.html">Contact</a>
+				</div>				
+			</div>
+
+			<div class="right-side">
+				<p>Justin Mitchell's Portfolio</p>
+			</div>
+		</div>
+
+
+		<div class="my-projects">
+			<h1>The Wild</h1>
+		</div>
+
+
+	<div class="content-wrapper">
+
+		<a class="github-link" href="https://github.com/justinmtech/The-Wild">VIEW ON GITHUB</a>
+
+		<div class="project-info">
+		<div class="info-summary">
+			<h2>General Summary</h2>
+				<p>The Wild is a text-based RPG game where players can go to the "wild" and fight monsters to level up, make money and buy item upgrades from a shop. Monsters increase in difficulty as you level up, and their loot scales as well to compensate for the increased risk. Monsters have a simple AI which makes them to act differently based on how much HP they have. If you die, you lose all of your items!</p>
+
+			<h2>How was it made?</h2>
+				<p>The Wild was made completely in Java, and uses a text storage file to store and retrieve data. It uses local file storage rather than a centralized database because this game is meant to be played locally, and isn't accessed through the internet.</p>
+
+			<h2>How does it work?</h2>
+				<h3>Structure</h3>
+				<p>The code is structured into 5 sub-packages: commands, data, entity, user_interface and utilities. Running the game instantiates the Game class which is the central point of the application. The game class handles user input, game output, persistant data, the player and the state of the game (running or not).</p>
+
+				<h3>Basic Logic</h3>
+					<p>When the Game class is instantiated, the constructor instantiates a new Display and PlayerDataHandler. The Game username is ran through the PlayerDataHandler then attempts to find data from the player-data file. If the data exists, a new Entity is created to match that data and then returned by the method. If the data does not exist, it creates a new default player Entity. This updates the "player" Entity in the Game class and sets the parameters for other objects like the CommandParser.</p>
+					<p>After this initial prepping, the game is ready to be played. It works by keeping the user in a loop that parsers and handles commands while the game is running. There are 8 commands that can be ran depending on what the player wants to do, as listed: "help", "info", "shop", "inn", "wild", "town", "battle" and "quit". The command parser determines if the string input the user gives matches any of these through a switch statement, and if it does, it instantiates the object for that command.</p>
+				<h3>Entity</h3>
+					<p>The entity package contains the Entity class and the combat_logic package since they are closely related.</p>
+					<h4>Entity</h4>
+					<p>The Entity class is the backbone of all "living things" in the game. The game needs to know several things about an Entity to be able to function properly, including: hp (hitpoints/health), level, location, name, inventory and whether or not they are in combat.</p>
+					<h4>Combat Logic</h4>
+						<p>The Combat Logic package contains skills and enemy ai. It houses all of the logic needed to determine the result of the combat interactions between the player and "computers".</p>
+						<p>There are three skills every Entity has access to: heal, slash and stab. The main difference between each of these skills is the amount of damage they do to the opponent, and how consistent that damage is. Each skill class works by using attacker/defender Entity fields and updating each entity after an attack.</p>
+				<h3>Commands</h3>
+					<h4>Command Class</h4>
+						<p>All of the following commands extend the Command class. The command class has 4 fields it keeps track of in order to execute commands. The label, player, computer (npc entity), and the display.</p>
+					<h4>Help</h4>
+						<p>Triggering the help command will display all of the commands at the player's disposal.</p>
+					<h4>Quit</h4>
+						<p>The quit command asks the player if they are sure they want to quit, and if they are</p>
+					<h4>Info</h4>
+						<p>The info class displays information about the player, including their inventory, money username and location.</p>
+					<h4>Inn</h4>
+						<p>The Inn is a class that updates the player's location to the Inn, then asks them if they want to stay for the night in exchange for some money. If the player answer's yes, then the amount of coins required is deducted from their account, if they have them.</p>
+					<h4>Wild</h4>
+						<p>The wild class puts the user in an instance where they can use the "battle" command.</p>
+					<h4>Town</h4>
+						<p>The town class changes the player's location to town. When a player issues any command, it checks their location and the commands available to them changed based on that location. For example, in town, players can go to the inn, but they can't go there while in the wild.</p>
+					<h4>Shop</h4>
+						<p>The shop class puts the player in an instance where they can purchase items. The items are listed on the screen and if the player wants to purchase something, they type the name of the item, then the shop "npc" asks them if they want to purchase it. If they type yes and have enough money, the item is added to their inventory.</p>
+					<h4>Battle</h4>
+						<p>The Battle command puts the player into a combat loop where two entities exist, them and the enemy. The player is only allowed to do skill commands so they cannot leave the fight easily with no consequences. Every time the player does an attack, it runs the skill command class for that skill and returns both entities in a list. Then, the a skill chosen by the EnemyAI class runs as the computer's attack, which also returns the two entities again. This process will repeat until one or both entities in the battle die, or if the player fleas.</p>
+
+
+			<h2>Data</h2>
+				<h3>Configuration</h3>
+					<p>The Wild has some aspects that are configurable by the user before running the game. The LoadConfiguration class connects to a YML file where the configuration details are.</p>
+				<h3>Player Data</h3>
+					<p>Player data is stored in the player-data folder as a text file. Each player has their own text file, named after their username. The text files are created and updated through the ResourceManager class.</p>
+				<h3>Resource Manager</h3>
+					<p>The ResourceManager class is responsible for manipulating the persistent player data. Data is saved and loaded using Java's Object Input/Output streams.</p>
+				<h3>Saving & Retrieving Data</h3>
+					<p>Data is saved to a text file when the player uses the "quit" command then types "yes" as confirmation, which calls the save method from PlayerDataHandler and finishes the programs execution.</p>
+					<p>When the program is started, it asks the user for a username. After this username is entered, it runs a method that updates the Game classes player field depending on if the username exists as a text file in player-data.</p>
+
+
+			<h2>User Interface</h2>
+				<h3>Input Parsing</h3>
+					<p>The CommandParser class contains two fields needed to execute a command. It needs the input the user entered, and the Entity object of that user. The input string is parsed and determined if it is a command that exists and available. If it is available, then the correspondig class is instantiated to execute the command.</p>
+				<h3>Display</h3>
+					<p>The display class puts almost all of the output the program gives the player in one place. This makes it easily configurable, and it does not create clutter in the other classes having several lines of print statements.</p>
+
+			<h2>Utilities</h2>
+				<h3>Random Number Generator</h3>
+					<p>This program uses RNG's a lot to create probability outcomes. I made a static method for generating a random number between two parameter values for returning a random number on the spot.</p>
+				<h3>Scan Input</h3>
+					<p>Since input scanning is used a lot in the program, I built a utility class for it with static methods. This made it easier than instantiating a new Scanner object every time the program needed to get input. ScanInput.getString() returns the next input the user gives, and trims any spaces off of the end or beginning.</p>
+			
+		</div>
+		</div>
+
+	</div>
+	</div>
+</div>
+
+
+</body>
+
+<footer>	
+	<div class="footer">
+	<div class="footer-links">
+				<div class="footer-link-wrapper">
+					<a href="https://github.com/justinmtech">Github</a>
+				</div>
+				<div class="footer-link-wrapper">
+					<a href="https://twitter.com/jamm_affinity">Twitter</a>
+				</div>
+				<div class="footer-link-wrapper">
+					<a href="mailto:contact@justinmtech.com">Contact</a>
+				</div>
+	</div>
+	</div>
+</footer>
+
+</html>

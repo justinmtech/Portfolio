@@ -3,7 +3,8 @@
 body {
 	margin: 0px;
 	font-family: arial;
-	background-color: #dedede;
+	/*background-color: #dedede;*/
+	background-color: white;
 	font-size: 16px;
 	height: 100%;
 	min-height: 100%;
@@ -67,6 +68,29 @@ body {
 }
 
 /*Portfolio styles*/
+
+.top-header {
+	width: 100%;
+	height: 75px;
+	text-align: center;
+	outline: 1px black;
+}
+
+.content-wrapper {
+	height: 1200px;
+}
+
+.left {
+	padding: 64px;
+	float: left;
+	width: 55%;
+}
+
+.right {
+	padding: 64px;
+	float: right;
+	width: 25%;
+}
 
 .portfolio-items-wrapper {
 	max-width: 1900px;
